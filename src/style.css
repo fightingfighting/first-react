@@ -1,0 +1,10 @@
+.button{
+  background: pink;
+  border: none;
+}
+.input{
+  border: none;
+  background: pink;
+  margin-right: 10px;
+  outline: none;
+}
