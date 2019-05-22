@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import TodoItem from './TodoItem'
 import './style.css'
 class TodoList extends Component{
   constructor(props){
@@ -11,19 +12,25 @@ class TodoList extends Component{
   render(){
     return (
       <Fragment>
+        {/* 父组件向子组件传递参数 - 属性 + 方法(绑定this)
+          子组件获得父组件参数 - props*/}
         <div>
-          <input className="input" type="text" value = {this.state.inputVal} onChange={this.handleInput.bind(this)}/>
+          <label htmlFor="insertArea">输入内容</label>
+          <input id="insertArea" className="input" type="text" value = {this.state.inputVal} onChange={this.handleInput.bind(this)}/>
           <button className="button" onClick = { this.handleSubmit.bind(this) }>提交</button>
         </div>
         <ul>
           {
             this.state.list.map((item, index) => {
-              return <li key={index} onClick={ this.handleDelete.bind(this, index) }>{item}</li>
+              return  <TodoItem key={index} content={item} index={index}></TodoItem>
             })
           }
         </ul>
       </Fragment>
     )
+  }
+  getTodoItem(){
+    
   }
 
   handleInput(e){
